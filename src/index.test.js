@@ -11,11 +11,11 @@ describe('Our first test', () => {
 
 describe('index.html', () => {
 
-    it('should say hello', (done) => {
+    it('should have h1 that says users', (done) => {
         const index = fs.readFileSync('./src/index.html', "utf-8");
         jsdom.env(index, (err, window) => {
-            const h4 = window.document.getElementsByTagName('h4')[0];
-            expect(h4.innerHTML).to.equal("Hello from ab");
+            const h1 = window.document.getElementsByTagName('h1')[0];
+            expect(h1.innerHTML).to.equal("Here are the users");
             done();
             window.close();
         });
