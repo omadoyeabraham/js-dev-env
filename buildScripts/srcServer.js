@@ -1,9 +1,20 @@
-const express = require('express');
-const path = require('path');
-const open = require('open');
+import express from 'express';
+import path from 'path';
+import open from 'open';
+import webpack from 'webpack';
+import config from '../webpack.config.dev';
+
+/* eslint-disable no-console */
 
 const port = 4000;
-let app = express();
+const app = express();
+const compiler = webpack(config);
+
+//Using webpack
+app.use( require('webpack-dev-middleware') (compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
 
 app.get('/' , (req, res) => {
     res.sendFile(path.join(__dirname, '../src/index.html'));

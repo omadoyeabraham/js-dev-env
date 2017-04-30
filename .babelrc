@@ -1,0 +1,10 @@
+/**
+*Babel transpiles JS Code to ES5
+*
+**/
+
+{
+    "presets": [
+        "latest"
+    ]
+}
